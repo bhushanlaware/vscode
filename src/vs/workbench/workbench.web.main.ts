@@ -81,8 +81,8 @@ import { UserDataAutoSyncService } from 'vs/platform/userDataSync/common/userDat
 import { AccessibilityService } from 'vs/platform/accessibility/browser/accessibilityService';
 import { ICustomEndpointTelemetryService } from 'vs/platform/telemetry/common/telemetry';
 import { NullEndpointTelemetryService } from 'vs/platform/telemetry/common/telemetryUtils';
-import { ITitleService } from 'vs/workbench/services/title/common/titleService';
-import { TitlebarPart } from 'vs/workbench/browser/parts/titlebar/titlebarPart';
+// import { ITitleService } from 'vs/workbench/services/title/common/titleService';
+// import { TitlebarPart } from 'vs/workbench/browser/parts/titlebar/titlebarPart';
 import { ITimerService, TimerService } from 'vs/workbench/services/timer/browser/timerService';
 import { IConfigurationResolverService } from 'vs/workbench/services/configurationResolver/common/configurationResolver';
 import { ConfigurationResolverService } from 'vs/workbench/services/configurationResolver/browser/configurationResolverService';
@@ -99,7 +99,7 @@ registerSingleton(IUserDataSyncBackupStoreService, UserDataSyncBackupStoreServic
 registerSingleton(IUserDataSyncAccountService, UserDataSyncAccountService);
 registerSingleton(IUserDataSyncService, UserDataSyncService);
 registerSingleton(IUserDataAutoSyncService, UserDataAutoSyncService);
-registerSingleton(ITitleService, TitlebarPart);
+// registerSingleton(ITitleService, TitlebarPart);
 registerSingleton(IExtensionTipsService, ExtensionTipsService);
 registerSingleton(ITimerService, TimerService);
 registerSingleton(IConfigurationResolverService, ConfigurationResolverService, true);
@@ -151,4 +151,5 @@ import 'vs/workbench/contrib/issue/browser/issue.web.contribution';
 // Splash
 import 'vs/workbench/contrib/splash/browser/splash.contribution';
 
-//#endregion
+
+

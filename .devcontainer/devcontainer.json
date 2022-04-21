@@ -26,7 +26,8 @@
 
 	"extensions": [
 		"dbaeumer.vscode-eslint",
-		"mutantdino.resourcemonitor"
+		"mutantdino.resourcemonitor",
+		"eliverlara.andromeda"
 	],
 
 	// Optionally loads a cached yarn install for the repo
