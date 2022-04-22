@@ -2,21 +2,26 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-import 'vs/css!./styles/index';
-// import { registerSingleton } from 'vs/platform/instantiation/common/extensions';
+import { Disposable } from 'vs/base/common/lifecycle';
 import { TitlebarPart } from 'vs/workbench/browser/parts/titlebar/titlebarPart';
-// import { ITitleService } from 'vs/workbench/services/title/common/titleService';
+
+import 'vs/css!./styles/index';
+import { commands } from 'vs/workbench/workbench.web.api';
+
 type SwitchContainer = HTMLDivElement &
 	Readonly<{ input: HTMLInputElement; label: HTMLLabelElement }>;
 
 export class TitlebarWithTogglePreview extends TitlebarPart implements Disposable {
 
 	switchContainer!: SwitchContainer;
+	isPreviewOpen = true;
 
 	override createContentArea(parent: HTMLElement): HTMLElement {
 		parent = super.createContentArea(parent);
 
 		const switchContainer = this.createSwitchContainer();
+
+		switchContainer.addEventListener('change', this.handleOnChange);
 
 		const textElement = document.createElement('p');
 		textElement.innerText = 'Output';
@@ -30,39 +35,24 @@ export class TitlebarWithTogglePreview extends TitlebarPart implements Disposabl
 
 		parent.appendChild(contentArea);
 
+		this.switchContainer = switchContainer;
+		this.toggleSwitch(this.isPreviewOpen);
+
 		return parent;
 	}
 
-	handleOnChange = async () => {
-		// this.refresh();
-		// const widget = await this.getWidget();
-		// if (widget?.isVisible) {
-		// 	this.shell.rightPanelHandler.tabBar.currentTitle = null;
-		// } else {
-		// 	try {
-		// 		// TODO: import command from projects-run
-		// 		// await this.commands.executeCommand('vscode-realtime-preview:command');
-		// 		// await this.commands.executeCommand('mini-browser.openUrl', 'https://www.lola.com');
-		// 		console.log('in handleOnChange');
-		// 	} catch (err) {s
-		// 		// this.messageService.error(
-		// 		//   "Couldn't open preview. Please try again later.",
-		// 		//   {
-		// 		//     timeout: 5000,
-		// 		//   }
-		// 		// );
-		// 	}
-		// }
+
+	handleOnChange = () => {
+		this.isPreviewOpen = !this.isPreviewOpen;
+		this.toggleSwitch(this.isPreviewOpen);
+		commands.executeCommand('vscode-responsive-preview.togglePreview', this.isPreviewOpen);
 	};
 
-	// refresh = async () => {
-	// 	const widget = await this.getWidget();
-	// 	if (widget?.isVisible) {
-	// 		this.toggleSwitch(true);
-	// 	} else {
-	// 		this.toggleSwitch(false);
-	// 	}
-	// };
+	public override dispose(): void {
+		super.dispose();
+		this.switchContainer.removeEventListener('change', this.handleOnChange);
+	}
+
 
 	toggleSwitch = (state: boolean): void => {
 		if (state) {
@@ -97,4 +87,3 @@ export class TitlebarWithTogglePreview extends TitlebarPart implements Disposabl
 	}
 
 }
-console.log('out TitlebarWithTogglePreview');

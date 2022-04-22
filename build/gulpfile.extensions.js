@@ -64,7 +64,8 @@ const compilations = [
 	'vscode-colorize-tests/tsconfig.json',
 	'vscode-custom-editor-tests/tsconfig.json',
 	'vscode-notebook-tests/tsconfig.json',
-	'vscode-test-resolver/tsconfig.json'
+	'vscode-test-resolver/tsconfig.json',
+	'vscode-responsive-preview/tsconfig.json'
 ];
 
 const getBaseUrl = out => `https://ticino.blob.core.windows.net/sourcemaps/${commit}/${out}`;

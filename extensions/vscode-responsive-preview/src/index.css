@@ -1,0 +1,94 @@
+.responsive-root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.responsive-toolbar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 8px;
+  margin: -4px;
+  margin-bottom: 8px;
+}
+
+.responsive-toolbar-divider {
+  border-top: 1px solid var(--theia-panel-border);
+  margin-top: 10px;
+  margin-bottom: 8px;
+}
+
+.responsive-toolbar > * {
+  margin: 4px;
+  background-color: var(--theia-sideBar-background);
+  height: 30px;
+  font-size: 14px;
+  border: 0px;
+}
+
+.responsive-toolbar > input {
+  max-width: 54px;
+  max-height: 28px;
+  outline: none;
+}
+
+.injected-iframe-container {
+  height: 100%;
+  width: 100%;
+}
+
+.injected-iframe-container iframe {
+  height: 100%;
+  width: 100%;
+}
+
+.responsive-content-container {
+  flex: 1;
+  position: relative;
+}
+
+.resizer {
+  background-color: #40c1e8;
+  opacity: 0.5;
+}
+
+.resizer:hover,
+.resizer:focus,
+.resizer:active {
+  opacity: 1;
+}
+
+.corner-resizer-icon {
+  position: absolute;
+  cursor: nwse-resize;
+  opacity: 0.5;
+}
+
+.corner-resizer-icon:hover,
+.corner-resizer-icon:focus,
+.corner-resizer-icon:active {
+  opacity: 1;
+}
+
+.corner-resizer-icon:after {
+  content: '';
+  height: calc(1.414 * 100%);
+  width: 1px;
+  background-color: black;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.corner-resizer-icon:before {
+  content: '';
+  width: 1px;
+  height: calc(1.414 * 50%);
+  background-color: black;
+  position: absolute;
+  left: calc(50% + 25%);
+  top: calc(50% + 25%);
+  transform: translate(-50%, -50%) rotate(45deg);
+}

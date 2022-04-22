@@ -1,6 +1,6 @@
 # Change Log
 
-All notable changes to the "vscode-toggle-preview" extension will be documented in this file.
+All notable changes to the "vscode-responsive-preview" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 

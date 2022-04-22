@@ -42,6 +42,7 @@ exports.dirs = [
 	'extensions/vscode-custom-editor-tests',
 	'extensions/vscode-notebook-tests',
 	'extensions/vscode-test-resolver',
+	'extensions/vscode-responsive-preview',
 	'remote',
 	'remote/web',
 	'test/automation',

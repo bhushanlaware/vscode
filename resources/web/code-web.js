@@ -424,9 +424,9 @@ async function handleRoot(req, res) {
 	);
 	const openFileUrl = args['open-file'] ? url.parse(args['open-file'], true) : undefined;
 	let selection;
-	if (openFileUrl?.hash) {
+	if (openFileUrl && openFileUrl.hash) {
 		const rangeMatch = /L(?<startLineNumber>\d+)(?::(?<startColumn>\d+))?((?:-L(?<endLineNumber>\d+))(?::(?<endColumn>\d+))?)?/.exec(openFileUrl.hash);
-		if (rangeMatch?.groups) {
+		if (rangeMatch && rangeMatch.groups) {
 			const { startLineNumber, startColumn, endLineNumber, endColumn } = rangeMatch.groups;
 			const start = { line: parseInt(startLineNumber), column: startColumn ? (parseInt(startColumn) || 1) : 1 };
 			const end = endLineNumber ? { line: parseInt(endLineNumber), column: endColumn ? (parseInt(endColumn) || 1) : 1 } : start;
