@@ -1,4 +1,5 @@
 import * as vscode from "vscode";
+import { BUNDLER_URL } from "../src/constants";
 
 export function activate(context: vscode.ExtensionContext) {
 	const resizePreviewWebViewProvider = new ResizePreviewWebViewProvider(
@@ -62,9 +63,14 @@ class ResizePreviewWebViewProvider implements vscode.WebviewViewProvider {
 		const scriptUri = webview.asWebviewUri(
 			vscode.Uri.joinPath(this._extensionUri, "media", "main.js")
 		);
-
 		const styleMainUri = webview.asWebviewUri(
 			vscode.Uri.joinPath(this._extensionUri, "media", "main.css")
+		);
+		const styleResetUri = webview.asWebviewUri(
+			vscode.Uri.joinPath(this._extensionUri, "media", "reset.css")
+		);
+		const styleVscodeUri = webview.asWebviewUri(
+			vscode.Uri.joinPath(this._extensionUri, "media", "vscode.css")
 		);
 
 		// Use a nonce to only allow a specific script to be run.
@@ -80,11 +86,13 @@ class ResizePreviewWebViewProvider implements vscode.WebviewViewProvider {
 					Use a content security policy to only allow loading images from https or from our extension directory,
 					and only allow scripts that have a specific nonce.
 				-->
-				<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${webview.cspSource}; script-src 'nonce-${nonce}'; connect-src https: wss:">
+				<meta http-equiv="Content-Security-Policy" content="default-src 'none'; frame-src ${BUNDLER_URL}; style-src ${webview.cspSource}; script-src 'nonce-${nonce}'; connect-src https: wss:">
 
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 				<link href="${styleMainUri}" rel="stylesheet">
+				<link href="${styleResetUri}" rel="stylesheet">
+				<link href="${styleVscodeUri}" rel="stylesheet">
 
 				<title>External Resources</title>
 			</head>

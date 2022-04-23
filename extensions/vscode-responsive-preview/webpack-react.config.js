@@ -1,4 +1,6 @@
 const path = require('path');
+const webpack = require('webpack');
+
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
@@ -7,7 +9,12 @@ module.exports = {
     path: path.resolve(__dirname, 'media'),
   },
   mode: 'production',
-  plugins: [new MiniCssExtractPlugin()],
+  plugins: [
+    new MiniCssExtractPlugin(),
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
+    })
+  ],
   module: {
     rules: [
       {

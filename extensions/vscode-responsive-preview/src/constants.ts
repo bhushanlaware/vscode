@@ -1,24 +1,27 @@
 export enum DEVICES {
-  CUSTOM = "custom",
-  MOBILE = "mobile",
-  TABLET = "tablet",
-  HD = "hd",
-  FHD = "fhd",
+	CUSTOM = "custom",
+	MOBILE = "mobile",
+	TABLET = "tablet",
+	HD = "hd",
+	FHD = "fhd",
 }
 
+export const BUNDLER_URL =
+	process.env.BUNDLER_URL || "https://www.hackerrank.com/";
+
 export const DEVICE_TO_NAME = Object({
-  [DEVICES.CUSTOM]: "Custom",
-  [DEVICES.MOBILE]: "Mobile",
-  [DEVICES.TABLET]: "Tablet",
-  [DEVICES.HD]: "Desktop (HD)",
-  [DEVICES.FHD]: "Desktop (Full HD)",
+	[DEVICES.CUSTOM]: "Custom",
+	[DEVICES.MOBILE]: "Mobile",
+	[DEVICES.TABLET]: "Tablet",
+	[DEVICES.HD]: "Desktop (HD)",
+	[DEVICES.FHD]: "Desktop (Full HD)",
 });
 
 export const DEVICE_TO_DIMENSIONS = Object.freeze({
-  [DEVICES.MOBILE]: { w: 375, h: 812 },
-  [DEVICES.TABLET]: { w: 768, h: 1024 },
-  [DEVICES.HD]: { w: 1280, h: 720 },
-  [DEVICES.FHD]: { w: 1920, h: 1080 },
+	[DEVICES.MOBILE]: { w: 375, h: 812 },
+	[DEVICES.TABLET]: { w: 768, h: 1024 },
+	[DEVICES.HD]: { w: 1280, h: 720 },
+	[DEVICES.FHD]: { w: 1920, h: 1080 },
 });
 
 export const RESIZER_THICKNESS = 6;

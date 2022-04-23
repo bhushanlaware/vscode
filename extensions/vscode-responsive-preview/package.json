@@ -35,8 +35,8 @@
 		"package-web": "webpack --mode production --devtool hidden-source-map",
 		"lint": "eslint src --ext ts",
 		"run-in-browser": "vscode-test-web --browserType=chromium --extensionDevelopmentPath=. .",
-		"build-react": "webpack build --config ./webpack-react.config.js",
-		"build-react-watch": "webpack build --config ./webpack-react.config.js --watch"
+		"compile-react": "webpack build --config ./webpack-react.config.js",
+		"watch-react": "webpack build --config ./webpack-react.config.js --watch"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.16.0",
